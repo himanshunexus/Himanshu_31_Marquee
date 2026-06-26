@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Container layout */
+    .container {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 80px;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Base Box Styling */
+    .box {
+      width: 120px;
+      height: 120px;
+      background-color: #007bff;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border-radius: 8px;
+      position: relative;
+      
+      /* Essential properties for 3D rotation and smoothness */
+      transform-style: preserve-3d;
+      perspective: 500px;
+      transition: transform 0.5s ease;
+    }
+
+    /* BOX 1: Rotate X (Flips Forward/Backward) */
+    .box-x:hover {
+      transform: rotateX(180deg);
+    }
+
+    /* BOX 2: Rotate Y (Flips Left/Right Like a Door) */
+    .box-y:hover {
+      transform: rotateY(180deg);
+    }
+
+    /* BOX 3: Rotate X and Y Together (Diagonal Flip) */
+    .box-xy:hover {
+      transform: rotateX(180deg) rotateY(180deg);
+    }
+
+    /* Pseudo-element to see the back side of the box when flipped */
+    .box::after {
+      content: "Back";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #ff4757;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Flips the backside text so it looks right when the main box rotates */
+      transform: rotateY(180deg) translateZ(1px); 
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="box box-x">Rotate X</div>
+    <div class="box box-y">Rotate Y</div>
+    <div class="box box-xy">Both X & Y</div>
+  </div>
+
+</body>
+</html>
