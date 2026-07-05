@@ -121,3 +121,21 @@
 
 // forEach(callbackFn)
 // forEach(callbackFn, thisArg)
+
+
+
+// const array1 = ['a', 'b', 'c'];
+// array1.forEach(element => console.log(element));
+
+
+// MAP 
+
+const kvArray = [
+  { key: 1, value: 10 },
+  { key: 2, value: 20 },
+  { key: 3, value: 30 },
+];
+
+const keysArray = kvArray.map(({ key }) => key);
+
+console.log(keysArray);
