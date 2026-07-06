@@ -40,3 +40,14 @@ console.log(prices);
 
 const foodList = orders.map((order, index) => `${index + 1}. ${order.food}`);
 console.log(foodList);
+
+
+const evenPrices = orders.filter(order => order.price % 2 === 0);
+console.log(evenPrices);
+
+const deliveredOrders = orders.filter(order => order.delivered);
+console.log(deliveredOrders);
+
+const totalPrice = orders.reduce((acc, order) => acc + order.price, 0);
+console.log(totalPrice);
+
