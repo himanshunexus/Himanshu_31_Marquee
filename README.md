@@ -10,14 +10,6 @@
 - `projects/admin-dashboard/` - dashboard layout practice
 - `projects/flipkart-flexbox/` - larger Flipkart clone using Flexbox
 
-## Suggested MERN Growth Path
 
-When you start full MERN apps, create each app as its own folder inside `projects/`, for example:
 
-```text
-projects/
-  todo-mern/
-    client/
-    server/
-```
 
