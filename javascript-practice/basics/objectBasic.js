@@ -57,3 +57,21 @@ delete car.color;
 delete car["warranty"];
 console.log(car.color); 
 console.log(car.warranty); 
+
+
+
+
+function printLaptop(name , model){
+    return {
+        name,
+        model
+    }
+}
+
+let laptop1 = printLaptop("Dell", "XPS 13");
+console.log(laptop1.name);
+console.log(laptop1.model);
+
+let laptop2 = printLaptop("Apple", "MacBook Pro");
+console.log(laptop2.name);
+console.log(laptop2.model);
