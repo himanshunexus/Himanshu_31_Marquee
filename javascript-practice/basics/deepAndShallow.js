@@ -66,3 +66,162 @@ console.log(a[0][0]); // 10 (original array is affected due to shallow copy)
 let c = structuredClone(a);
 c[0][0] = 20;
 console.log(a[0][0]); // 10 (original array remains unchanged)
+
+
+
+
+
+
+// Standard Deep Clone Function
+
+// If you want to create a perfect duplicate of an object without keeping references 
+// to the original, you can use this recursive function
+
+
+function deepClone(inputData) {
+    // 1. Handle primitive data types (numbers, strings, booleans, null, undefined)
+    if (typeof inputData !== 'object' || inputData === null) {
+        return inputData; 
+    }
+
+    // 2. Initialize the container as either an Array or an Object
+    let result;
+    if (Array.isArray(inputData)) {
+        result = [];
+    } else {
+        result = {};
+    }
+
+    // 3. Loop through every property in the item
+    for (let key in inputData) {
+        // Only copy properties that belong directly to the object
+        if (inputData.hasOwnProperty(key)) {
+            // Recursively call the function for nested items
+            result[key] = deepClone(inputData[key]);
+        }
+    }
+
+    // 4. Return the brand new copy
+    return result;
+}
+
+
+
+
+// How to Use It
+
+
+const user = {
+    name: "Alex",
+    age: 25,
+    hobbies: ["reading", "gaming"],
+    address: {
+        city: "New York",
+        zip: 10001
+    }
+};
+
+// Create the deep copy
+const userCopy = deepClone(user);
+
+// Prove they are independent by changing the copy
+userCopy.address.city = "Los Angeles";
+userCopy.hobbies.push("coding");
+
+console.log(user.address.city);  // Output: "New York" (Original is safe!)
+console.log(userCopy.address.city);  // Output: "Los Angeles"
+
+
+
+// Deep Freeze Function
+
+
+function deepFreeze(inputData) {
+    // 1. Freeze the current level of the object immediately
+    Object.freeze(inputData);
+
+    // 2. Loop through every property to find nested objects
+    for (let key in inputData) {
+        if (inputData.hasOwnProperty(key)) {
+            let value = inputData[key];
+
+            // 3. If the property is a valid object, freeze it recursively
+            if (typeof value === 'object') {
+                if (value !== null) {
+                    deepFreeze(value);
+                }
+            }
+        }
+    }
+
+    // 4. Return the fully frozen object
+    return inputData;
+}
+
+
+
+
+// Deep Merge Function
+
+
+// This function takes two separate objects and combines them. If both objects share 
+// a key that points to a nested object, it merges those nested layers instead of 
+// overwriting them
+
+
+
+function deepMerge(target, source) {
+    // 1. Create a fresh container object to hold the merged result
+    let result = {};
+
+    // 2. Copy everything from the target object first
+    for (let key in target) {
+        if (target.hasOwnProperty(key)) {
+            result[key] = target[key];
+        }
+    }
+
+    // 3. Process and merge everything from the source object
+    for (let key in source) {
+        if (source.hasOwnProperty(key)) {
+            
+            // Check if the key exists in both objects and both are nested objects
+            if (typeof result[key] === 'object' && result[key] !== null) {
+                if (typeof source[key] === 'object' && source[key] !== null) {
+                    // Both are objects, so merge them recursively
+                    result[key] = deepMerge(result[key], source[key]);
+                } else {
+                    // Source is a primitive, overwrite the target object
+                    result[key] = source[key];
+                }
+            } else {
+                // Key doesn't conflict with an object, safe to overwrite or add
+                result[key] = source[key];
+            }
+            
+        }
+    }
+
+    // 4. Return the combined object
+    return result;
+}
+
+
+
+// Examples of How to Use Them
+
+
+
+// --- Deep Freeze Example ---
+const user = { name: "Sam", settings: { theme: "dark" } };
+deepFreeze(user);
+user.settings.theme = "light"; // Silently fails or throws an error in strict mode
+console.log(user.settings.theme); // Output: "dark"
+
+// --- Deep Merge Example ---
+const original = { name: "Alex", skills: { html: true } };
+const updates = { age: 30, skills: { css: true } };
+
+const merged = deepMerge(original, updates);
+console.log(merged); 
+// Output: { name: "Alex", age: 30, skills: { html: true, css: true } }
