@@ -91,3 +91,12 @@ function getNewProduct() {
 
 refreshBtn.addEventListener('click', getNewProduct);
 getNewProduct();
+
+function changeBackgroundColor() {
+    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    document.body.style.backgroundColor = randomColor;
+    // document.body.style.backgroundColor = "cyan";
+}
+
+// setInterval(changeBackgroundColor, 9);
+refreshBtn.addEventListener('click', changeBackgroundColor);
