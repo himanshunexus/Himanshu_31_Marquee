@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO APP 2</title>
+</head>
+<body>
+    <div id = "tdapp">
+        <input type = "text"></input>
+        <button onclick="addTodo()">ADD TODO</button>
+    </div>
+    <script>
+        function addTodo() {
+            const element = document.querySelector("input");
+            const value = element.value;
+            const newValue = document.createElement("div");
+            newValue.textContent = value;
+            document.querySelector("body").appendChild(newValue);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+    <div id="counter">
+        <h1>0</h1>
+        <button onclick="incereseCount()">CLICK HERE ( + )</button>
+    </div>
+    <script>
+        let count = 0;
+        function incereseCount(){
+            document.querySelector("h1").textContent = count;
+            count += 1;
+        }
+    </script>
+</body>
+</html>
