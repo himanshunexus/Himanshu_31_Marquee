@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STORE DATA IN OBJECT</title>
+</head>
+<body>
+    <h2>STUDENT FORM</h2>
+    <form id="store">
+        <input type="text" id="name" placeholder="Enter Name" required>
+        <br>
+        <input type="number" id="age" placeholder="Enter Age" required>
+        <br>
+        <input type="text" id="email" placeholder="Enter Email" required>
+        <br>
+        <button type="submit" id="submitBtn">Submit</button>
+        <h3>Output will be displayed here</h3>
+        <p id="res"></p>
+    </form>
+    <h2>Student Data</h2>
+    <ul id="studentList"></ul>
+    <script src="script.js"></script>
+    <!-- <script>
+        const form = document.getElementById('store');
+        const res = document.getElementById('res');
+        const studentList = document.getElementById('studentList');
+        const userArr = [];
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const user = {
+                name: document.getElementById('name').value,
+                age: document.getElementById('age').value,
+                email: document.getElementById('email').value
+            }
+            console.log(user);
+            res.innerText = JSON.stringify(user, null, 2);
+        });
+
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PASS WORD CHECKER</title>
+</head>
+<body>
+    <input type="password" id="pass" required>
+    <h3 id="passRes"></h3> 
+    <script>
+        const pass = document.getElementById('pass');
+        const passRes = document.getElementById('passRes');
+        pass.addEventListener('input', function() {
+            if (pass.value.length < 8) {
+                passRes.innerHTML = "Password is weak.. must be at least 8 characters long.";
+            } 
+            if (!/[A-Z]/.test(pass.value)) {
+                passRes.innerHTML = "Password is weak.. must contain at least one uppercase letter.";
+            }
+            if (!/[a-z]/.test(pass.value)) {
+                passRes.innerHTML = "Password is weak.. must contain at least one lowercase letter.";
+            }
+            if (!/[0-9]/.test(pass.value)) {
+                passRes.innerHTML = "Password is weak.. must contain at least one number.";
+            }
+            if (!/[!@#$%^&*(),.?":{}|<>]/.test(pass.value)) {
+                passRes.innerHTML = "Password is weak.. must contain at least one special character.";
+            }
+            else {
+                passRes.innerHTML = "Password is valid.";
+            }
+        });
+    </script>
+</body>
+</html>

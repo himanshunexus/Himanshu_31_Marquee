@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+</head>
+<body>
+    <form id="form">
+        Name:
+        <input type="text" name="name" id="name">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <h2>OUTPUT</h2>
+    <input type="text" id="box">
+    <h3 id="res"></h3>
+
+    <input type="text" id="username" required>
+    <button type="button" id='submitBtn'>Submit</button>
+    <h3 id="usernameRes"></h3> 
+
+    <input type="text" id="fullname" value="Mahi" required>
+    <h3 id="fullnameRes"></h3> 
+    <script>
+        // SUBMIT FORM
+        const form = document.getElementById('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            console.log('Form submitted with name:', name);
+        });
+        // INPUT BOX
+        const box = document.getElementById('box');
+        const res = document.getElementById('res'); // Fixed: Added missing definition
+        box.addEventListener('input', function() {
+            res.innerHTML = box.value;
+        });
+        // CHANGE EVENT
+        // box.addEventListener('change', function() {
+        //     res.innerText = box.value;
+        // });
+
+        // FOCUS EVENT
+        box.addEventListener('focus', function() {
+            box.style.backgroundColor = 'yellow';
+        });
+        box.addEventListener('blur', function() {
+            box.style.backgroundColor = 'white';
+        });
+
+        // Fixed: Target correct ID 'username' instead of 'name'
+        const username = document.getElementById('username'); 
+        const usernameRes = document.getElementById('usernameRes');
+        username.addEventListener('input', function() {
+            usernameRes.innerHTML = username.value;
+        });        
+
+        const fullname = document.getElementById('fullname');
+        const fullnameRes = document.getElementById('fullnameRes');
+        fullname.addEventListener('input', function() {
+            fullnameRes.innerHTML = fullname.value;
+        });
+
+    </script>
+</body>
+</html>
