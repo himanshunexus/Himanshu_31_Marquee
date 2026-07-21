@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <p id="hidden">This is a paragraph that can be hidden.</p>
+  <input type="password" id="password" placeholder="Enter your password" required>
+  <button id="toggle">Show Password</button>
+
+  <script>
+    // Hide paragraph logic
+    document.getElementById("hidden").onclick = function(){
+      para.style.display = "none"
+    }
+
+    // Password show & hide
+    const password = document.getElementById("password")
+    const toggleBtn = document.getElementById("toggle")
+
+    toggleBtn.addEventListener("click",()=>{
+      if(password.type==="password"){
+        password.type = "text"
+        toggleBtn.innerText = "Hide Password"
+      } else {
+        password.type = "password"
+        toggleBtn.innerText = "Show Password"
+      }
+    })
+  </script>
+</body>
+</html>

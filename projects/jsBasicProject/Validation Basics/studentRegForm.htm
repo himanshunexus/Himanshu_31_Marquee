@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple Registration</title>
+</head>
+<body>
+
+    <h2>Register</h2>
+    <form id="regForm">
+        <!-- Name Input -->
+        <label>Name:</label>
+        <input type="text" id="inputName"><br><br>
+
+        <!-- Email Input -->
+        <label>Gmail:</label>
+        <input type="email" id="inputEmail"><br><br>
+
+        <!-- Password Input and Toggle Button -->
+        <label>Password:</label>
+        <input type="password" id="inputPassword">
+        <button type="button" id="togglePassword">Show</button><br><br>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submitBtn">Register</button>
+    </form>
+
+    <div id="msg"></div>
+
+    <script>
+                    // Get HTML Elements
+            const inputName = document.getElementById("inputName");
+            const inputEmail = document.getElementById("inputEmail");
+            const inputPassword = document.getElementById("inputPassword");
+            const togglePassword = document.getElementById("togglePassword");
+            const submitBtn = document.getElementById("submitBtn");
+            const msg = document.getElementById("msg");
+            const regForm = document.getElementById("regForm");
+
+            // Password Input Listener to change border colors
+            inputPassword.addEventListener("input", () => {
+                // Check if the typed value matches your keyword exactly
+                if (inputPassword.value === "password") {
+                    inputPassword.style.border = "2px solid green";
+                } else {
+                    inputPassword.style.border = "2px solid red";
+                }
+            });
+
+            // Show / Hide Password Click Toggle
+            togglePassword.addEventListener("click", () => {
+                if (inputPassword.type === "password") {
+                    inputPassword.type = "text";
+                    togglePassword.textContent = "Hide";
+                } else {
+                    inputPassword.type = "password";
+                    togglePassword.textContent = "Show";
+                }
+            });
+
+            // Form Submit Handling
+            regForm.addEventListener("submit", (e) => {
+                e.preventDefault(); // Prevents page reload
+                
+                // Final check before letting user submit
+                if (inputPassword.value === "password") {
+                    msg.innerText = "User Registering...";
+                } else {
+                    msg.innerText = "Error: Wrong Password Match!";
+                }
+            });
+
+    </script>
+</body>
+</html>

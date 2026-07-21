@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM ENABLE DISABLE</title>
+</head>
+<body>
+    <!-- enable -->
+     <!-- <input type="text" id="name" placeholder="Enter your name" required> -->
+     <!-- <br> -->
+     <!-- <button id="submit">SUBMIT</button> -->
+     <!-- disable -->
+     <button id="disableBtn">Disable</button>
+     <button id="enableBtn">Enable</button>
+     <p>
+        lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        lorem ipsum dolor sit amet consectetur adipisicing elit.
+        lorem ipsum dolor sit amet consectetur adipisicing elit.
+     </p>
+     <script>
+        // const nameInput = document.getElementById('name');
+        // const submitBtn = document.getElementById('submit');
+        // const disableBtn = document.getElementById('disableBtn');
+        // const enableBtn = document.getElementById('enableBtn');
+
+        // submitBtn.addEventListener('click', function() {
+        //     alert('Form submitted successfully!');
+        // });
+
+        // disableBtn.addEventListener('click', function() {
+        //     nameInput.disabled = true;
+        //     submitBtn.disabled = true;
+        // });
+
+        // enableBtn.addEventListener('click', function() {
+        //     nameInput.disabled = false;
+        //     submitBtn.disabled = false;
+        // });
+        const disableBtn = document.getElementById('disableBtn');
+        const enableBtn = document.getElementById('enableBtn');
+        const para = document.querySelector('p');
+
+        disableBtn.addEventListener('click', function() {
+            para.style.display = 'none';
+        });
+        enableBtn.addEventListener('click', function() {
+            para.style.display = 'block';
+        });
+
+     </script>
+</body>
+</html>
