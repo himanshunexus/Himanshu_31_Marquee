@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTES</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7f6;
+        margin: 0;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 450px;
+    }
+
+    h2 {
+        margin-top: 0;
+        color: #333;
+        font-size: 28px;
+    }
+
+    h3 {
+        color: #666;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    form {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        outline: none;
+    }
+
+    input[type="text"]:focus {
+        border-color: #007bff;
+    }
+
+    button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+
+    #addBtn {
+        background-color: #28a745;
+        color: white;
+    }
+
+    #addBtn:hover {
+        background-color: #218838;
+    }
+
+    #clearBtn {
+        background-color: #dc3545;
+        color: white;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #clearBtn:hover {
+        background-color: #c82333;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 0 0;
+    }
+
+    li {
+        background-color: #f8f9fa;
+        padding: 12px;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        word-break: break-all;
+    }
+
+    .deleteBtn {
+        background-color: #6c757d;
+        color: white;
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .deleteBtn:hover {
+        background-color: #5a6268;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Notes</h2>
+
+        <form id="notes">
+            <input type="text" id="noteInput" placeholder="Enter your note here">
+            <button type="submit" id="addBtn">Add Note</button>
+        </form>
+        <button id="clearBtn">Clear All </button>
+        <h3>Total Notes: <span id="count">0</span></h3>
+        <ul id="noteList"></ul>
+    </div>
+    <script>
+        const form = document.getElementById("notes");
+        const input = document.getElementById("noteInput");
+        const list = document.getElementById("noteList");
+        const count = document.getElementById("count");
+        const addBtn = document.getElementById("addBtn");
+        const clrBtn = document.getElementById("clearBtn");
+        let totalNotes = 0;
+
+        form.addEventListener("submit" , (e)=>{
+            e.preventDefault();
+            if(input.value.trim() === ""){
+                alert("Please enter a note");  
+                return;
+            }
+            
+            const li = document.createElement("li");
+            
+            const span = document.createElement("span");
+            span.textContent = input.value;
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.className = "deleteBtn";
+            deleteBtn.addEventListener("click", ()=>{
+                li.remove();
+                totalNotes--;
+                count.textContent = totalNotes;
+            });
+            
+            li.appendChild(span);
+            li.appendChild(deleteBtn);
+            
+            list.appendChild(li);
+            totalNotes++;
+            count.textContent = totalNotes;
+            input.value = "";
+        });
+
+        clrBtn.addEventListener("click", ()=>{
+            while(list.firstChild){
+                list.removeChild(list.firstChild);
+            }
+            totalNotes = 0;
+            count.textContent = totalNotes;
+        });
+    </script>
+</body>
+</html>
