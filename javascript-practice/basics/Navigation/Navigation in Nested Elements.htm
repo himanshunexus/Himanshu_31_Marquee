@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation in Nested Elements</title>
+</head>
+<body>
+
+  <div class="card">
+    <div class="content">
+      <div class="details">
+        <h2>HIMANSHU</h2>
+        <p>MERN Developer</p>
+        <button class="show">
+          Show Profile
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="card">... -->
+
+<script>
+    const showButtons = document.querySelectorAll(".show");
+
+    for (let btn of showButtons) {
+    btn.addEventListener("click", function () {
+        const card = this.closest(".card");
+        const name = card.querySelector("h2").innerText;
+        const role = card.querySelector("p").innerText;
+
+        alert(name + "\n" + role);
+    });
+    }
+
+</script>
+</body>
+</html>

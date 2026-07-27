@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class List</title>
+    <style> 
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+        .red{
+            background-color: red;
+        }
+        .circle{
+            border-radius: 50%;
+        
+        }
+        .border{
+            border: 5px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box"></div>
+    <button id="add">ADD RED</button>
+    <button id="remove">REMOVE RED</button>
+    <button id="toggle">TOGGLE CIRCLE</button>
+    <button id="replace">REPLACE</button>
+    <button id="contains">CONTAINS</button>
+    <script>
+        const box = document.getElementById("box");
+        const addBtn = document.getElementById("add");
+        const removeBtn = document.getElementById("remove");
+        const toggleBtn = document.getElementById("toggle");
+        const replaceBtn = document.getElementById("replace");
+        const containsBtn = document.getElementById("contains");
+        addBtn.addEventListener("click", function(){
+            box.classList.add("red");
+        })
+        removeBtn.addEventListener("click", function(){
+            box.classList.remove("red");
+        })
+        toggleBtn.addEventListener("click", function(){
+            box.classList.toggle("circle");
+        })
+        replaceBtn.addEventListener("click", function(){
+            box.classList.replace("red","border");
+        })
+        containsBtn.addEventListener("click", function(){
+            if(box.classList.contains("border")){
+                alert("Box has border class");
+            }else{
+                alert("Box does not have border class");
+            }
+        })
+
+        
+    </script>
+</body>
+</html>

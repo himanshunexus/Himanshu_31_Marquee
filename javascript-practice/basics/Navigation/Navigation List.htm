@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation List</title>
+</head>
+<body>
+    <ul class="list">
+        <li>
+            coffee
+            <button class="delete">Delete</button>
+        </li>
+        <li>
+            tea
+            <button class="delete">Delete</button>
+        </li>
+        <li>
+            water
+            <button class="delete">Delete</button>
+        </li>
+    </ul>
+    <script>
+        const deleteButtons = document.querySelectorAll(".delete");
+
+        for (let btn of deleteButtons) {
+            btn.addEventListener("click", function () {
+                const li = this.closest("li");
+                let name = li.innerText;
+                li.remove();
+                alert(name + " has been deleted");
+            });
+        }
+    </script>
+</body>
+</html>
